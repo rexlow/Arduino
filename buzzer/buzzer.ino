@@ -20,9 +20,9 @@
 /* Macro Define */
 #define BUZZER_PIN               4            /* sig pin of the buzzer */
 
-int length = 15;         /* the number of notes */
-char notes[] = "ccggaagffeeddc ";
-int beats[] = { 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 4 };
+int length = 3;         /* the number of notes */
+char notes[] = "ccg ";
+int beats[] = { 1, 1, 1};
 int tempo = 300;
 
 void setup()
