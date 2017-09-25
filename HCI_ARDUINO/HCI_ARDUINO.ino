@@ -125,31 +125,33 @@ void initiateBluetooth() {
 }
 
 void bluetoothHelper() {
-  if (BTSerial.available()) {
+  if (BTSerial.available() || Serial.available()) {
     byte r = BTSerial.read();
+    byte s = Serial.read();
     BTSerial.flush();
     Serial.println(r);
-
+    Serial.println(s);
+    
     if (r == 51) {
       dispenseProduct();
-    } else if (r == 65) {
+    } else if (r == 65 || s == 65) {
       
-    } else if (r == 68) {
+    } else if (r == 68 || s == 68) {
       COUNT++;
-    } else if (r == 69) {
+    } else if (r == 69 || s == 69) {
       COUNT--;
-    } else if (r == 70) {
+    } else if (r == 70 || s == 70) {
       askForPayment();
-    } else if (r == 71) {
+    } else if (r == 71 || s == 71) {
       COUNT = 0;
       reset();
     }
   }
 
-  if (Serial.available()) {
-    BTSerial.write(Serial.read());
-    delay(300);
-  }
+//  if (Serial.available()) {
+//    BTSerial.write(Serial.read());
+//    delay(300);
+//  }
 }
 
 void askForPayment() {
@@ -309,4 +311,5 @@ void segDisplay() {
   }
 
 }
+
 
